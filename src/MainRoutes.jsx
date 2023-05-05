@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Home from './pages/Home';
-import TriviaGame from './component/TriviaGame';
-import Results from './component/Results';
+import TriviaGame from './components/TriviaGame';
+import Results from './components/Results';
 
 export default function MainRoutes() {
   return (
