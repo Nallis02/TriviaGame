@@ -1,0 +1,90 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100vh;
+  padding: 20px;
+}
+
+.home-container h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.home-container p {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.home-container Button {
+  font-weight: 500;
+  font-size: 20px;
+  height: 50px;
+  width: 100px;
+}
+.ant-btn-primary {
+  background-color: rgb(101, 37, 160);
+  color: white;
+  box-shadow: 5px 5px 5px black;
+}
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100vh;
+  padding: 20px;
+}
+.game-container .button-boolean Button {
+  margin: 5px;
+  box-shadow: 5px 5px 5px black;
+}
+.game-container p {
+  box-shadow: 5px 5px 5px black;
+  border: 1px solid #000;
+  height: 20%;
+  padding: 20px;
+  border-radius: 20px;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+.results-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100vh;
+}
+
+.answered-questions-list {
+  list-style: none;
+  padding: 0;
+  margin: 0px;
+  width: 100%;
+}
+.question-text {
+  font-size: 10px;
+  text-align: justify;
+}
+.play-again-link {
+  margin-top: 20px;
+}
+.anticon svg {
+  font-weight: 700;
+  font-size: 12px;
+  margin: 0 4px;
+}
+.anticon-plus {
+  color: green;
+}
+
+.anticon-minus {
+  color: red;
+}
+.ant-list .ant-list-item {
+  justify-content: flex-start;
+}

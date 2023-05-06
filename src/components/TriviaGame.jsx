@@ -1,64 +1,49 @@
-import { useEffect, useState } from "react";
-import getTriviaChallenge from "../services/getTriviaChallenge";
+import { useEffect } from "react";
 import Question from "./Question";
 import Results from "./Results";
+import { InfoContext } from "../contexts/InfoContexs";
+import useTriviaGame from "../hooks/useTriviaGame";
 
 const TriviaGame = () => {
-  const [questions, setQuestions] = useState([]);
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [score, setScore] = useState(0);
-  const [answeredQuestions, setAnsweredQuestions] = useState([]);
+  // Get questions and navigate function from the InfoContext
+  const { questions, navigate } = InfoContext();
 
+  // If there are no questions, redirect to the home page
   useEffect(() => {
-    getTriviaChallenge()
-      .then((data) => setQuestions(data))
-      .catch((error) => console.log(error));
-  }, []);
+    !questions && navigate("/home");
+  }, [questions, navigate]);
 
-  const handleAnswer = (answer) => {
-    const currentQuestion = questions[currentQuestionIndex];
-    const isAnswerCorrect = answer === currentQuestion.correct_answer;
+  // Call the useTriviaGame hook to manage game state
+  const {
+    handleAnswer,
+    handleRestart,
+    score,
+    currentQuestion,
+    currentQuestionIndex,
+    answeredQuestions,
+  } = useTriviaGame(questions);
 
-    if (isAnswerCorrect) {
-      setScore(score + 1);
-    }
-
-    setAnsweredQuestions([
-      ...answeredQuestions,
-      { ...currentQuestion, isAnswerCorrect },
-    ]);
-    setCurrentQuestionIndex(currentQuestionIndex + 1);
-  };
-
-  const handleRestart = () => {
-    setAnsweredQuestions([]);
-    setCurrentQuestionIndex(0);
-    setScore(0);
-  };
-
-  const currentQuestion = questions[currentQuestionIndex];
-
+  // Render the game container, question component and results component
   return (
-    <div>
-      {questions.length > 0 && currentQuestion && (
-  <Question
-    key={currentQuestion.question}
-    question={currentQuestion}
-    onClick={handleAnswer}
-    index={currentQuestionIndex}
-    totalQuestionsCount={10} 
-  />
-)}
-
-
-      {answeredQuestions.length === questions.length && (
-        <Results
-          score={score}
-          answeredQuestions={answeredQuestions}
-          onRestart={handleRestart}
+    <section className="game-container">
+      {questions?.length > 0 && currentQuestion && (
+        <Question
+          key={currentQuestion.question}
+          question={currentQuestion}
+          onClick={handleAnswer}
+          index={currentQuestionIndex}
+          totalQuestionsCount={10}
         />
       )}
-    </div>
+      {questions?.length > 0 &&
+        answeredQuestions.length === questions.length && (
+          <Results
+            score={score}
+            answeredQuestions={answeredQuestions}
+            onRestart={handleRestart}
+          />
+        )}
+    </section>
   );
 };
 
