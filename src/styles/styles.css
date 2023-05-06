@@ -53,9 +53,6 @@
   display: none;
 }
 .results-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: space-evenly;
   height: 100vh;
 }
@@ -87,4 +84,20 @@
 }
 .ant-list .ant-list-item {
   justify-content: flex-start;
+}
+@media screen and (max-width: 768px) {
+  .results-container {
+    height: auto;
+    padding: 20px 0;
+  }
+  .answered-questions-list {
+    max-height: 300px;
+    overflow-y: scroll;
+  }
+  .question-text {
+    font-size: 14px;
+  }
+  .play-again-link {
+    margin-top: 10px;
+  }
 }

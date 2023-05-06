@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 import { MinusOutlined, PlusOutlined } from "@ant-design/icons";
 export default function Results({ score, answeredQuestions }) {
   return (
-    <section className="results-container">
+    <div className="results-container">
       <h2 className="score-title">Your score {score} / 10</h2>
       <List className="answered-questions-list">
         {answeredQuestions &&
@@ -32,6 +32,6 @@ export default function Results({ score, answeredQuestions }) {
           PLAY AGAIN
         </Button>
       </Link>
-    </section>
+    </div>
   );
 }
