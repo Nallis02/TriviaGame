@@ -27,8 +27,8 @@ export default function Results({ score, answeredQuestions }) {
             </List.Item>
           ))}
       </List>
-      <Link to="/" className="play-again-link">
-        <Button type="primary" className="play-again-button">
+      <Link to="/">
+        <Button type="primary">
           PLAY AGAIN
         </Button>
       </Link>

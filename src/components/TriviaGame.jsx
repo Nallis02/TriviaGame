@@ -10,7 +10,7 @@ const TriviaGame = () => {
 
   // If there are no questions, redirect to the home page
   useEffect(() => {
-    !questions && navigate("/home");
+    !questions && navigate("/");
   }, [questions, navigate]);
 
   // Call the useTriviaGame hook to manage game state
